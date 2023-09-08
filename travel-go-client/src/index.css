@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Volkhov&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* root variables */
+:root {
+  --poppins: "Poppins", sans-serif;
+  --volkhov: "Volkhov", serif;
+}
+
+body {
+  font-family: var(--poppins);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
