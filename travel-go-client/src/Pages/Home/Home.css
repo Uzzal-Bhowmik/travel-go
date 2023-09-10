@@ -1,0 +1,48 @@
+/* Home Styles */
+
+/* Banner Styles */
+.home-banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  z-index: -999;
+}
+
+.banner-input-fields {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: rgba(243, 243, 243, 0.6);
+  backdrop-filter: blur(2px);
+  padding: 16px 10px;
+}
+
+.banner-input-fields input[type="text"]::placeholder {
+  color: white;
+}
+
+.banner-input-fields input[type="text"],
+select {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  padding-inline: 8px;
+  border-right: 3px solid #d0d0d0;
+  height: 40px;
+}
+
+.banner-input-fields option {
+  color: gray;
+}
+
+.banner-input-fields input[type="submit"] {
+  cursor: pointer;
+  box-shadow: 0px 20px 35px 0px rgba(223, 105, 81, 0.15);
+}

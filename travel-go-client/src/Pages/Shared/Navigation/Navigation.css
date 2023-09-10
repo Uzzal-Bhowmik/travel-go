@@ -1,0 +1,25 @@
+.menu li a {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0;
+}
+.menu li {
+  margin-right: 14px;
+}
+.menu li::after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  transition: all ease-in-out 0.4s;
+  background: none repeat scroll 0 0 #df6951;
+  display: block;
+}
+.menu li:hover::after {
+  width: 100%;
+}
+
+.menu li a:hover {
+  background-color: transparent;
+  color: #fff;
+}

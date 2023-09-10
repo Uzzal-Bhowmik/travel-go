@@ -8,6 +8,7 @@
 :root {
   --poppins: "Poppins", sans-serif;
   --volkhov: "Volkhov", serif;
+  --primary-color: #df6951;
 }
 
 body {
