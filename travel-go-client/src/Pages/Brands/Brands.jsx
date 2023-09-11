@@ -8,7 +8,7 @@ import brand5 from "../../assets/brands logo/image 913.png";
 
 const Brands = () => {
   return (
-    <div className="brands block md:flex items-center justify-evenly">
+    <div className="brands block md:flex items-center justify-evenly mb-10">
       <img src={brand1} alt="" />
       <img src={brand2} alt="" />
       <img src={brand3} alt="" />
