@@ -5,10 +5,11 @@ import bannerVector from "../../assets/Vector 1.png";
 import bannerGroup from "../../assets/bannerGroup.png";
 import { HashLink } from "react-router-hash-link";
 import { BsArrowDownCircle } from "react-icons/bs";
+import Brands from "../Brands/Brands";
 
 const Home = () => {
   return (
-    <div className="home">
+    <div>
       {/* Top Banner */}
       <div
         className="home-banner p-2"
@@ -58,7 +59,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex items-center text-white space-x-5 mt-5 ml-1">
+          <div className="md:flex items-center text-white space-x-5 mt-5 ml-1">
             <img src={bannerGroup} alt="" className="h-8" />
             <span className="text-sm">
               2,500 people booked Paris Package in last month
@@ -76,8 +77,14 @@ const Home = () => {
       {/* Top Banner End */}
 
       {/* Brands */}
-
+      <div>
+        <Brands />
+      </div>
       {/* Brands End */}
+
+      <div>
+        <h1>hello world</h1>
+      </div>
     </div>
   );
 };
