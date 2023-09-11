@@ -46,3 +46,37 @@ select {
   cursor: pointer;
   box-shadow: 0px 20px 35px 0px rgba(223, 105, 81, 0.15);
 }
+
+.banner-input-fields a {
+  transition: all 0.2s ease-out;
+}
+
+.banner-input-fields a:hover {
+  transform: translateY(-2px);
+}
+
+.scroll-down-icon {
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+}
+.scroll-down-icon svg {
+  height: 40px;
+  width: 40px;
+  fill: rgb(209, 197, 197);
+  stroke: rgb(150, 143, 143);
+  animation: scroll-down 3s ease-out infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

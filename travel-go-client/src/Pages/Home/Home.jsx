@@ -2,15 +2,21 @@ import React from "react";
 import "./Home.css";
 import bannerBg from "../../assets/homeBannerBg.png";
 import bannerVector from "../../assets/Vector 1.png";
+import bannerGroup from "../../assets/bannerGroup.png";
 import { HashLink } from "react-router-hash-link";
+import { BsArrowDownCircle } from "react-icons/bs";
 
 const Home = () => {
   return (
     <div className="home">
+      {/* Top Banner */}
       <div
         className="home-banner p-2"
-        style={{ backgroundImage: `url(${bannerBg})` }}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(${bannerBg})`,
+        }}
       >
+        {/* banner text */}
         <div className="banner-text md:ml-20 w-[48%]">
           <img src={bannerVector} alt="" />
 
@@ -18,7 +24,8 @@ const Home = () => {
             No matter where you’re going to, we’ll take you there
           </h1>
 
-          <div className="banner-input-fields flex items-center border">
+          {/* banner input fields */}
+          <div className="banner-input-fields flex items-center">
             <div className="grid grid-cols-4">
               <input type="text" name="" id="" placeholder="Where to?" />
 
@@ -50,8 +57,27 @@ const Home = () => {
               </HashLink>
             </div>
           </div>
+
+          <div className="flex items-center text-white space-x-5 mt-5 ml-1">
+            <img src={bannerGroup} alt="" className="h-8" />
+            <span className="text-sm">
+              2,500 people booked Paris Package in last month
+            </span>
+          </div>
+          {/* scroll icon */}
+          <div className="scroll-down-icon">
+            <BsArrowDownCircle />
+            <span className="text-sm text-white pt-2 block font-[var(--volkhov)] tracking-wider">
+              Scroll
+            </span>
+          </div>
         </div>
       </div>
+      {/* Top Banner End */}
+
+      {/* Brands */}
+
+      {/* Brands End */}
     </div>
   );
 };
