@@ -7,6 +7,7 @@ import { HashLink } from "react-router-hash-link";
 import { BsArrowDownCircle } from "react-icons/bs";
 import Brands from "../Brands/Brands";
 import Navigation from "../Shared/Navigation/Navigation";
+import Packages from "./Packages/Packages";
 
 const Home = () => {
   return (
@@ -34,8 +35,8 @@ const Home = () => {
                 <div className="grid grid-cols-4">
                   <input type="text" name="" id="" placeholder="Where to?" />
 
-                  <select name="" id="">
-                    <option value="" selected disabled>
+                  <select name="" id="" defaultValue={"Travel Type"}>
+                    <option value="Travel Type" disabled>
                       Travel Type
                     </option>
                     <option value="">Bus</option>
@@ -43,8 +44,8 @@ const Home = () => {
                     <option value="">Flight</option>
                   </select>
 
-                  <select name="" id="">
-                    <option value="" selected disabled>
+                  <select name="" id="" defaultValue={"Duration"}>
+                    <option value="Duration" disabled>
                       Duration
                     </option>
                     <option value="">1 Day</option>
@@ -87,6 +88,12 @@ const Home = () => {
         <Brands />
       </div>
       {/* Brands End */}
+
+      {/* Packages */}
+      <div className="my-20" id="services">
+        <Packages />
+      </div>
+      {/* Packages End */}
     </div>
   );
 };

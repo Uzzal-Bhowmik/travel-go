@@ -24,6 +24,14 @@ async function run() {
   try {
     await client.connect();
 
+    const packageCollection = client.db("travelGoDB").collection("packages");
+
+    // packages get method
+    app.get("/packages", async (req, res) => {
+      const result = await packageCollection.find().toArray();
+      res.send(result);
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
