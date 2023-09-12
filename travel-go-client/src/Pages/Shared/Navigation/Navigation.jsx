@@ -58,7 +58,7 @@ const Navigation = () => {
       </div>
       {/* ----------------- */}
       <div className="navbar-end">
-        <Link className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium">
+        <Link className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition">
           Get In Touch
         </Link>
       </div>

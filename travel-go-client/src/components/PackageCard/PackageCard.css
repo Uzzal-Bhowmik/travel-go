@@ -1,0 +1,42 @@
+/* card styles */
+
+.package-card {
+  border: 2px solid gray;
+  border-radius: 16px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.package-card:hover {
+  box-shadow: 0px 0px 10px 10px lightgray;
+}
+
+.card-img-container {
+  position: relative;
+  padding: 8px 10px;
+}
+
+.place-img {
+  height: 312.486px;
+  display: block;
+  margin-inline: auto;
+  border-radius: 16px;
+}
+
+.flag-img {
+  width: 76.402px;
+  height: 76.402px;
+  border-radius: 76.402px;
+  border: 6px solid #fff;
+  box-shadow: 6px 14px 27px 0px rgba(0, 0, 0, 0.15),
+    -4px 11px 18px 0px rgba(0, 0, 0, 0.25) inset;
+
+  position: absolute;
+  bottom: -35px;
+  left: 50px;
+}
+
+.package-desc {
+  padding: 16px;
+  margin-top: 1.5rem;
+}

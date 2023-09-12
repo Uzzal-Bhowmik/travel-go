@@ -13,7 +13,7 @@ const Packages = () => {
   console.log(packages);
   return (
     <div>
-      <div className="text-center border mb-10">
+      <div className="text-center mb-10">
         <p className="text-[var(--primary-color)] font-semibold text-sm">
           TRENDY
         </p>
@@ -26,7 +26,7 @@ const Packages = () => {
         </h1>
       </div>
 
-      <div>
+      <div className="container grid md:grid-cols-3 gap-7 p-5 md:p-0">
         {packages.map((pkg) => (
           <PackageCard key={pkg._id} pkg={pkg} />
         ))}

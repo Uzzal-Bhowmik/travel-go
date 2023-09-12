@@ -28,9 +28,9 @@
   color: #fff;
 }
 
-.navbar-end a {
+.btn-transition {
   transition: all 0.2s ease-out;
 }
-.navbar-end a:hover {
+.btn-transition:hover {
   transform: translateY(-3px);
 }
