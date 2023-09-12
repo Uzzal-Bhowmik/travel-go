@@ -134,7 +134,7 @@ const Home = () => {
       {/* Separator End */}
 
       {/* Tours */}
-      <div>
+      <div className="my-40">
         <Tours />
       </div>
       {/* Tours End */}
