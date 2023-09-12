@@ -10,8 +10,6 @@ const Tours = () => {
       .then((data) => setTourData(data));
   }, []);
 
-  console.log(tourData);
-
   return (
     <div className="relative container pb-10">
       <img
@@ -48,7 +46,7 @@ const Tours = () => {
 
       <div className="grid grid-cols-4 w-[80%] z-10 mt-10">
         {tourData?.map((tour) => (
-          <div key={tour._id} className="relative">
+          <div key={tour._id} className="relative btn-transition">
             <span
               className="badge rounded-full text-white w-[83px] absolute top-4 left-4"
               style={{

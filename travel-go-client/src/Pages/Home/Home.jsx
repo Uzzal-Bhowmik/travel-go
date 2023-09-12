@@ -10,6 +10,7 @@ import Navigation from "../Shared/Navigation/Navigation";
 import Packages from "./Packages/Packages";
 import libertyBg from "../../assets/libertyBg.png";
 import Tours from "./Tours/Tours";
+import Reviews from "./Reviews/Reviews";
 
 const Home = () => {
   return (
@@ -138,6 +139,12 @@ const Home = () => {
         <Tours />
       </div>
       {/* Tours End */}
+
+      {/* Reviews */}
+      <div className="mb-40">
+        <Reviews />
+      </div>
+      {/* Reviews End */}
     </div>
   );
 };

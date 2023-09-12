@@ -6,6 +6,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage.jsx";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const router = createBrowserRouter([
   {
