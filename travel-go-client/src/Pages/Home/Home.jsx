@@ -11,6 +11,7 @@ import Packages from "./Packages/Packages";
 import libertyBg from "../../assets/libertyBg.png";
 import Tours from "./Tours/Tours";
 import Reviews from "./Reviews/Reviews";
+import Footer from "../Shared/Navigation/Footer/Footer";
 
 const Home = () => {
   return (
@@ -135,16 +136,22 @@ const Home = () => {
       {/* Separator End */}
 
       {/* Tours */}
-      <div className="my-40">
+      <div className="my-40" id="tours">
         <Tours />
       </div>
       {/* Tours End */}
 
       {/* Reviews */}
-      <div className="mb-40">
+      <div id="reviews">
         <Reviews />
       </div>
       {/* Reviews End */}
+
+      {/* Footer */}
+      <footer id="footer">
+        <Footer />
+      </footer>
+      {/* Footer End */}
     </div>
   );
 };

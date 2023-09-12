@@ -16,7 +16,19 @@ const Navigation = () => {
         </HashLink>
       </li>
       <li>
-        <Link to="/">Upcoming Links</Link>
+        <HashLink smooth to="/#tours">
+          Tours
+        </HashLink>
+      </li>
+      <li>
+        <HashLink smooth to="/#reviews">
+          Reviews
+        </HashLink>
+      </li>
+      <li>
+        <HashLink smooth to="/#footer">
+          Contact
+        </HashLink>
       </li>
     </>
   );
