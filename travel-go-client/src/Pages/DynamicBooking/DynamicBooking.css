@@ -1,0 +1,101 @@
+.booking-banner-container {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.booking-info-con {
+  position: absolute;
+  top: 530px;
+  left: 5%;
+}
+
+/* booking details left side styles */
+.booking-text {
+  width: 65%;
+}
+
+.booking-details table {
+  margin-top: 33px;
+}
+
+.booking-details td {
+  height: 90px;
+}
+
+.include-items {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 37px;
+  padding-bottom: 10px;
+  height: fit-content !important;
+}
+
+.booking-details tr td:nth-of-type(1) {
+  color: #df6951;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.booking-details tr td:nth-of-type(2) {
+  padding-left: 40px;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* booking input styles */
+.booking-input {
+  width: 35%;
+  padding: 20px 8px 10px 8px;
+  background: #ededed;
+}
+
+.booking-input-field {
+  background: #fff;
+  position: relative;
+  width: 359px;
+  height: 76px;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+}
+
+.booking-input-field svg {
+  position: absolute;
+  width: 20px !important;
+  height: 20px !important;
+  stroke: #00000042;
+  opacity: 26%;
+  left: 25px;
+  top: 35%;
+}
+
+.booking-input-field input {
+  height: 100%;
+  width: 100%;
+  padding-left: 60px;
+  border: none;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid !important;
+}
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: rgb(168, 164, 164);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

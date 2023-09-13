@@ -26,7 +26,7 @@ const Navigation = () => {
         </HashLink>
       </li>
       <li>
-        <HashLink smooth to="/#footer">
+        <HashLink smooth to="#footer">
           Contact
         </HashLink>
       </li>
@@ -66,7 +66,7 @@ const Navigation = () => {
       </div>
       {/* --------------- */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal px-1 text-white">{navLinks}</ul>
       </div>
       {/* ----------------- */}
       <div className="navbar-end">

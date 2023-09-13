@@ -146,12 +146,6 @@ const Home = () => {
         <Reviews />
       </div>
       {/* Reviews End */}
-
-      {/* Footer */}
-      <footer id="footer">
-        <Footer />
-      </footer>
-      {/* Footer End */}
     </div>
   );
 };
