@@ -13,6 +13,7 @@ import AuthProvider from "./providers/AuthProvider.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import Bookings from "./Pages/Bookings/Bookings.jsx";
+import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
         path: "packages/:id",
         loader: async ({ params }) =>
           await fetch(`http://localhost:5000/packages/${params.id}`),
-        element: <DynamicBooking />,
+        element: (
+          <PrivateRoute>
+            <DynamicBooking />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",
@@ -40,7 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: "bookings",
-        element: <Bookings />,
+        element: (
+          <PrivateRoute>
+            <Bookings />
+          </PrivateRoute>
+        ),
       },
     ],
   },

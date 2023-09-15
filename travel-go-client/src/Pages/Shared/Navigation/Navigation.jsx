@@ -143,19 +143,19 @@ const Navigation = () => {
           </>
         ) : (
           <>
-            {pathName.includes("register") ? (
-              <Link
-                to="/login"
-                className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
-              >
-                Get In Touch
-              </Link>
-            ) : (
+            {pathName.includes("login") ? (
               <Link
                 to="/register"
                 className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
               >
                 Sign Up
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+              >
+                Get In Touch
               </Link>
             )}
           </>

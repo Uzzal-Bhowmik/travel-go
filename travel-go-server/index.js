@@ -71,9 +71,12 @@ async function run() {
       res.send(result);
     });
 
-    // bookings get method
+    // bookings by email query get method
     app.get("/bookings", async (req, res) => {
-      const result = await bookingCollection.find().toArray();
+      const query = req.query;
+      const result = await bookingCollection
+        .find({ email: query.email })
+        .toArray();
       res.send(result);
     });
 

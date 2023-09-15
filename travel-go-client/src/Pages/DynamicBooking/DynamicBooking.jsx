@@ -31,6 +31,7 @@ const DynamicBooking = () => {
     arrivalTime,
     included,
     review,
+    img,
   } = bookingDetails;
 
   const handleBookPackage = (e) => {
@@ -53,6 +54,7 @@ const DynamicBooking = () => {
       price,
       departureTime,
       arrivalTime,
+      img,
     };
 
     fetch("http://localhost:5000/bookings", {

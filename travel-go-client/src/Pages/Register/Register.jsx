@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Navigation from "../Shared/Navigation/Navigation";
 import loginBg from "../../assets/loginBg.png";
 import registerPic from "../../assets/signUp.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -11,6 +11,8 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { isLoading, signUp, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -22,7 +24,6 @@ const Register = () => {
 
     signUp(email, pass)
       .then((result) => {
-        console.log(result.user);
         form.reset();
 
         Swal.fire({
@@ -32,6 +33,8 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        navigate("/");
       })
       .catch((err) => setError(err?.code));
   };
@@ -39,7 +42,7 @@ const Register = () => {
   const handleGoogle = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
+        navigate("/");
       })
       .catch((err) => setError(err));
   };
@@ -60,7 +63,7 @@ const Register = () => {
             <div className="banner-text mx-auto md:w-[50%] text-white text-center space-y-3">
               <p className="text-sm font-medium">Be Our Guest</p>
               <h1 className="text-6xl" style={{ fontFamily: "var(--curly)" }}>
-                Get Connected With Us to Explore!
+                Register
               </h1>
             </div>
           </div>

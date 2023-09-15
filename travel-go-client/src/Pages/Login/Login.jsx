@@ -3,7 +3,7 @@ import "./Login.css";
 import Navigation from "../Shared/Navigation/Navigation";
 import loginBg from "../../assets/loginBg.png";
 import loginSidePic from "../../assets/login.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -12,6 +12,11 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { isLoading, signIn, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,7 +28,6 @@ const Login = () => {
 
     signIn(email, pass)
       .then((result) => {
-        console.log(result.user);
         form.reset();
 
         Swal.fire({
@@ -33,6 +37,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
+        navigate(from, { replace: true });
       })
       .catch((err) => setError(err?.code));
   };
@@ -40,7 +46,7 @@ const Login = () => {
   const handleGoogle = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result.user);
+        navigate(from, { replace: true });
       })
       .catch((err) => setError(err));
   };
@@ -61,7 +67,7 @@ const Login = () => {
             <div className="banner-text mx-auto md:w-[50%] text-white text-center space-y-3">
               <p className="text-sm font-medium">Welcome Back</p>
               <h1 className="text-6xl" style={{ fontFamily: "var(--curly)" }}>
-                Enjoy Your Travel With Us
+                Login
               </h1>
             </div>
           </div>
