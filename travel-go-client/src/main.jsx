@@ -12,6 +12,7 @@ import DynamicBooking from "./Pages/DynamicBooking/DynamicBooking.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
+import Bookings from "./Pages/Bookings/Bookings.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "bookings",
+        element: <Bookings />,
       },
     ],
   },

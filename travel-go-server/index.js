@@ -27,6 +27,7 @@ async function run() {
     const packageCollection = client.db("travelGoDB").collection("packages");
     const tourCollection = client.db("travelGoDB").collection("tours");
     const reviewCollection = client.db("travelGoDB").collection("reviews");
+    const bookingCollection = client.db("travelGoDB").collection("bookings");
 
     // packages get method
     app.get("/packages", async (req, res) => {
@@ -67,6 +68,19 @@ async function run() {
     // reviews get method
     app.get("/reviews", async (req, res) => {
       const result = await reviewCollection.find().toArray();
+      res.send(result);
+    });
+
+    // bookings get method
+    app.get("/bookings", async (req, res) => {
+      const result = await bookingCollection.find().toArray();
+      res.send(result);
+    });
+
+    // booking post method
+    app.post("/bookings", async (req, res) => {
+      const body = req.body;
+      const result = await bookingCollection.insertOne(body);
       res.send(result);
     });
 

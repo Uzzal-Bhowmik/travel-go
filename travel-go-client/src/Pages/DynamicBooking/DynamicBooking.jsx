@@ -14,9 +14,11 @@ import { TiTicket } from "react-icons/ti";
 import { FaRegUser } from "react-icons/fa";
 
 import stars from "../../assets/ratingStars.png";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const DynamicBooking = () => {
-  const { name, email } = { name: "uzzal", email: "abc@gmail.com" };
+  const { user } = useContext(AuthContext);
 
   const bookingDetails = useLoaderData();
   const {
@@ -30,7 +32,49 @@ const DynamicBooking = () => {
     included,
     review,
   } = bookingDetails;
-  console.log(bookingDetails);
+
+  const handleBookPackage = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const phone = form.phone.value;
+    const date = form.date.value;
+    const numOfTickets = form.tickets.value;
+
+    const bookedPackage = {
+      name,
+      email: user?.email,
+      phone,
+      date,
+      numOfTickets,
+      country,
+      place,
+      price,
+      departureTime,
+      arrivalTime,
+    };
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookedPackage),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Booking Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   return (
     <div className="relative">
@@ -161,10 +205,16 @@ const DynamicBooking = () => {
             </div>
 
             {/* input fields */}
-            <form action="" className="mt-10">
+            <form action="" className="mt-10" onSubmit={handleBookPackage}>
               <div className="booking-input-field">
                 <FaRegUser />
-                <input type="text" name="name" placeholder="Name" required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  defaultValue={user?.displayName && user?.displayName}
+                  required
+                />
               </div>
               {/* -------- */}
               <div className="booking-input-field">
@@ -172,7 +222,8 @@ const DynamicBooking = () => {
                 <input
                   type="email"
                   name="email"
-                  defaultValue={email}
+                  defaultValue={user?.email}
+                  disabled
                   required
                 />
               </div>
@@ -191,7 +242,7 @@ const DynamicBooking = () => {
                 <TiTicket />
                 <input
                   type="number"
-                  name="ticket"
+                  name="tickets"
                   placeholder="Number of tickets"
                 />
               </div>

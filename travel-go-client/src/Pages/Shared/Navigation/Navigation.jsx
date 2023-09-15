@@ -43,14 +43,14 @@ const Navigation = () => {
       {user?.uid && (
         <li tabIndex={0}>
           <details>
-            <summary className="text-white hover:text-white text-base pt-[7px]">
-              Parent
+            <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
+              Bookings
             </summary>
-            <ul className="p-2 w-[200px] bg-black border-2">
-              <li className="text-white">
-                <Link to="/myBookings">My Bookings</Link>
+            <ul className="md:p-2 md:w-[200px] md:bg-black border-2">
+              <li className="md:text-white">
+                <Link to="/bookings">My Bookings</Link>
               </li>
-              <li className="text-white">
+              <li className="md:text-white">
                 <Link>Submenu 2</Link>
               </li>
             </ul>
@@ -85,17 +85,6 @@ const Navigation = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
-
-            {user?.uid && (
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            )}
           </ul>
         </div>
         <Link className="btn btn-ghost border-0" to="/">
