@@ -10,7 +10,6 @@ const Packages = () => {
       .then((data) => setPackages(data));
   }, []);
 
-  console.log(packages);
   return (
     <div>
       <div className="text-center mb-10">

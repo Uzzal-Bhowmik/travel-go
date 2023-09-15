@@ -9,6 +9,9 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage.jsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DynamicBooking from "./Pages/DynamicBooking/DynamicBooking.jsx";
+import AuthProvider from "./providers/AuthProvider.jsx";
+import Login from "./Pages/Login/Login.jsx";
+import Register from "./Pages/Register/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,14 +29,24 @@ const router = createBrowserRouter([
           await fetch(`http://localhost:5000/packages/${params.id}`),
         element: <DynamicBooking />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

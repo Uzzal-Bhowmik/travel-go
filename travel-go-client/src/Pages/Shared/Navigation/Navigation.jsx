@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navigation.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navigation = () => {
+  const { user, logOut, isLoading } = useContext(AuthContext);
+  const pathName = useLocation()?.pathname;
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   const navLinks = (
     <>
       <li>
@@ -30,6 +40,23 @@ const Navigation = () => {
           Contact
         </HashLink>
       </li>
+      {user?.uid && (
+        <li tabIndex={0}>
+          <details>
+            <summary className="text-white hover:text-white text-base pt-[7px]">
+              Parent
+            </summary>
+            <ul className="p-2 w-[200px] bg-black border-2">
+              <li className="text-white">
+                <Link to="/myBookings">My Bookings</Link>
+              </li>
+              <li className="text-white">
+                <Link>Submenu 2</Link>
+              </li>
+            </ul>
+          </details>
+        </li>
+      )}
     </>
   );
 
@@ -58,6 +85,17 @@ const Navigation = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
+
+            {user?.uid && (
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
         <Link className="btn btn-ghost border-0" to="/">
@@ -70,9 +108,69 @@ const Navigation = () => {
       </div>
       {/* ----------------- */}
       <div className="navbar-end">
-        <Link className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition">
-          Get In Touch
-        </Link>
+        {isLoading ? (
+          <span className="loading loading-ring loading-lg text-warning"></span>
+        ) : (
+          <>
+            {user?.uid && (
+              <div
+                className="mr-4"
+                style={{ cursor: "pointer", width: "50px" }}
+              >
+                <>
+                  {user?.photoURL ? (
+                    <img
+                      src={`${user.photoURL}`}
+                      style={{
+                        width: "100%",
+                        borderRadius: "50%",
+                      }}
+                      title={`${user.email}`}
+                    />
+                  ) : (
+                    <span
+                      className="text-3xl font-bold text-white rounded-full bg-green-600 block text-center h-[50px] border-4 border-gray-300 py-1"
+                      title={`${user?.email}`}
+                    >
+                      {(user?.displayName !== null &&
+                        user?.displayName[0].toUpperCase()) ||
+                        user?.email[0].toUpperCase()}
+                    </span>
+                  )}
+                </>
+              </div>
+            )}
+          </>
+        )}
+
+        {user?.uid ? (
+          <>
+            <button
+              className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            {pathName.includes("register") ? (
+              <Link
+                to="/login"
+                className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+              >
+                Get In Touch
+              </Link>
+            ) : (
+              <Link
+                to="/register"
+                className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+              >
+                Sign Up
+              </Link>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

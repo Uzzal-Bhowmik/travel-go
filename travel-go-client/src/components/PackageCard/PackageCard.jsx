@@ -6,7 +6,6 @@ import ratingStars from "../../assets/ratingStars.png";
 import { Link } from "react-router-dom";
 
 const PackageCard = ({ pkg }) => {
-  console.log(pkg);
   const {
     _id,
     country,
