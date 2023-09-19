@@ -49,19 +49,19 @@ const Footer = () => {
           <p className="text-lg font-bold ">Destinations</p>
           <div className="mt-3 space-y-2">
             <p>
-              <HashLink to="/#services">Germany</HashLink>
+              <HashLink to="/#packages">Germany</HashLink>
             </p>
             <p>
-              <HashLink to="/#services">Switzerland</HashLink>
+              <HashLink to="/#packages">Switzerland</HashLink>
             </p>
             <p>
-              <HashLink to="/#services">Egypt</HashLink>
+              <HashLink to="/#packages">Egypt</HashLink>
             </p>
             <p>
-              <HashLink to="/#services">Maldives</HashLink>
+              <HashLink to="/#packages">Maldives</HashLink>
             </p>
             <p>
-              <HashLink to="/#services">Brazil</HashLink>
+              <HashLink to="/#packages">Brazil</HashLink>
             </p>
           </div>
         </div>
