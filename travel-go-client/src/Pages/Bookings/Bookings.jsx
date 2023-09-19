@@ -6,10 +6,17 @@ import profileBg from "../../assets/userProfileBg.png";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaRegPaperPlane } from "react-icons/fa6";
 import { FiUserCheck } from "react-icons/fi";
+import BookingCard from "./BookingCard/BookingCard";
+import { HashLink } from "react-router-hash-link";
+import Swal from "sweetalert2";
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+
+  // flags
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/bookings?email=${user?.email}`)
@@ -17,7 +24,62 @@ const Bookings = () => {
       .then((data) => {
         setBookings(data);
       });
-  }, []);
+  }, [isConfirmed, isDeleted, user]);
+
+  console.log(bookings);
+
+  // cancel booking method
+  const handleCancelBooking = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This booking will be cancelled.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancel it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/bookings/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              setIsDeleted(!isDeleted);
+              Swal.fire(
+                "Cancelled!",
+                "Your booking has been cancelled successfully",
+                "success"
+              );
+            }
+          });
+      }
+    });
+  };
+
+  const handleConfirmBooking = (_id) => {
+    fetch(`http://localhost:5000/bookings/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ confirm: true }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          setIsConfirmed(!isConfirmed);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your booking has been confirmed",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -67,61 +129,43 @@ const Bookings = () => {
         </div>
 
         <div
-          className="text-center mt-[72px]"
+          className="text-center mt-[80px]"
           style={{ fontFamily: "var(--volkhov)" }}
         >
-          <p className="font-bold text-xl mb-2">{user?.displayName}</p>
+          {user?.displayName && (
+            <p className="font-bold text-xl mb-2">{user?.displayName}</p>
+          )}
           <p className="font-bold text-gray-500">{user?.email}</p>
         </div>
       </div>
 
       {/* user booking information */}
       <div className="container">
-        <h1 className="bg-base-100 border text-dark text-3xl py-4 pl-10 rounded-xl shadow-lg font-bold flex items-center">
-          <FaRegPaperPlane />
-          <span className="ml-5">Bookings</span>
-        </h1>
-      </div>
-
-      <div className="container mt-10">
-        {/* row */}
-        <div className="overflow-x-auto">
-          <table className="table">
-            <tbody>
-              {bookings?.map((booking) => (
-                <tr key={booking._id}>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src="/tailwind-css-component-profile-2@56w.png"
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">Hart Hagerty</div>
-                        <div className="text-sm opacity-50">United States</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    Zemlak, Daniel and Leannon
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
-                    </span>
-                  </td>
-                  <td>Purple</td>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
-                  </th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {bookings.length ? (
+          <div className="container space-y-16">
+            {bookings.map((booking) => (
+              <BookingCard
+                key={booking._id}
+                bookingInfo={booking}
+                handleCancelBooking={handleCancelBooking}
+                handleConfirmBooking={handleConfirmBooking}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-2xl text-center">
+            <p>
+              Explore our services and bookings{" "}
+              <HashLink
+                to={"/#services"}
+                smooth
+                className="text-[var(--primary-color)] font-bold underline"
+              >
+                here
+              </HashLink>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

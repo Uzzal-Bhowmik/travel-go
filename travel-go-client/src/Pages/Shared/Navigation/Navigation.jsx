@@ -98,7 +98,7 @@ const Navigation = () => {
       {/* ----------------- */}
       <div className="navbar-end">
         {isLoading ? (
-          <span className="loading loading-ring loading-lg text-warning"></span>
+          <span className="loading loading-ring loading-lg text-warning mr-4"></span>
         ) : (
           <>
             {user?.uid && (
