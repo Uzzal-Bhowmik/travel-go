@@ -189,6 +189,7 @@ const DynamicBooking = () => {
               </table>
             </div>
           </div>
+          {/* ---------------------- */}
 
           {/* booking inputs */}
           <div className="booking-input">
@@ -257,6 +258,7 @@ const DynamicBooking = () => {
               </button>
             </form>
           </div>
+          {/* ------------------------- */}
         </div>
       </div>
     </div>

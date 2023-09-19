@@ -21,8 +21,8 @@ const Navigation = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <HashLink smooth to="/#services">
-          Services
+        <HashLink smooth to="/#packages">
+          Packages
         </HashLink>
       </li>
       <li>
@@ -46,12 +46,15 @@ const Navigation = () => {
             <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
               Bookings
             </summary>
-            <ul className="md:p-2 md:w-[200px] md:bg-black border-2">
+            <ul className="md:p-2 md:w-[250px] md:bg-black border-2">
               <li className="md:text-white">
                 <Link to="/bookings">My Bookings</Link>
               </li>
               <li className="md:text-white">
-                <Link>Submenu 2</Link>
+                <Link to="/allBookings">Manage All Bookings</Link>
+              </li>
+              <li className="md:text-white">
+                <Link to="/addPackage">Add New Package</Link>
               </li>
             </ul>
           </details>

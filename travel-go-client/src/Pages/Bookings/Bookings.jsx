@@ -4,8 +4,6 @@ import Navigation from "../Shared/Navigation/Navigation";
 import bookingBg from "../../assets/bookingsBg.png";
 import profileBg from "../../assets/userProfileBg.png";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FaRegPaperPlane } from "react-icons/fa6";
-import { FiUserCheck } from "react-icons/fi";
 import BookingCard from "./BookingCard/BookingCard";
 import { HashLink } from "react-router-hash-link";
 import Swal from "sweetalert2";
@@ -157,7 +155,7 @@ const Bookings = () => {
             <p>
               Explore our services and bookings{" "}
               <HashLink
-                to={"/#services"}
+                to={"/#packages"}
                 smooth
                 className="text-[var(--primary-color)] font-bold underline"
               >

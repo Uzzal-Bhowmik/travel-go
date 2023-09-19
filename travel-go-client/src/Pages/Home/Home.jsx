@@ -58,7 +58,7 @@ const Home = () => {
                     <option value="">1 Month</option>
                   </select>
 
-                  <HashLink to="/#services" smooth>
+                  <HashLink to="/#packages" smooth>
                     <input
                       type="submit"
                       value="Show Services"
@@ -94,7 +94,7 @@ const Home = () => {
       {/* Brands End */}
 
       {/* Packages */}
-      <div className="my-20" id="services">
+      <div className="my-20" id="packages">
         <Packages />
       </div>
       {/* Packages End */}

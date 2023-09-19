@@ -14,6 +14,8 @@ import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import Bookings from "./Pages/Bookings/Bookings.jsx";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute.jsx";
+import AllBookings from "./Pages/AllBookings/AllBookings.jsx";
+import AddPackage from "./Pages/AddPackage/AddPackage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,12 +38,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
+        path: "/allBookings",
+        element: (
+          <PrivateRoute>
+            <AllBookings />
+          </PrivateRoute>
+        ),
       },
       {
         path: "bookings",
@@ -50,6 +52,22 @@ const router = createBrowserRouter([
             <Bookings />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/addPackage",
+        element: (
+          <PrivateRoute>
+            <AddPackage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },

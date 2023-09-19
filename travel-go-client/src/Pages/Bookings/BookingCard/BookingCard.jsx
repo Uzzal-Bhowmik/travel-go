@@ -6,8 +6,9 @@ import { AiFillDollarCircle } from "react-icons/ai";
 
 const BookingCard = ({
   bookingInfo,
-  handleCancelBooking,
   handleConfirmBooking,
+  handleCancelBooking,
+  admin,
 }) => {
   const {
     _id,
@@ -25,7 +26,7 @@ const BookingCard = ({
 
   return (
     <div className="card card-side bg-base-100 border-2 border-[var(--primary-color)] w-[80%] mx-auto hover:shadow-2xl transition-all duration-300 cursor-pointer">
-      <figure>
+      <figure className="w-[33%]">
         <img src={img} alt={place + " " + country} className="h-full" />
       </figure>
       <div className="card-body">
@@ -105,13 +106,15 @@ const BookingCard = ({
           >
             Cancel
           </button>
-          <button
-            className="btn btn-success text-white"
-            onClick={() => handleConfirmBooking(_id)}
-            disabled={bookingInfo?.confirm === true}
-          >
-            {bookingInfo?.confirm ? "Booking Confirmed" : "Confirm Booking"}
-          </button>
+          {!admin && (
+            <button
+              className="btn btn-success text-white"
+              onClick={() => handleConfirmBooking(_id)}
+              disabled={bookingInfo?.confirm === true}
+            >
+              {bookingInfo?.confirm ? "Booking Confirmed" : "Confirm Booking"}
+            </button>
+          )}
         </div>
       </div>
     </div>

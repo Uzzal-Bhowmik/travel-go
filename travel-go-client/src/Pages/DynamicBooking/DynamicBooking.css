@@ -44,10 +44,10 @@
   line-height: 26px;
 }
 
-/* booking input styles */
+/* booking input/right side styles */
 .booking-input {
   width: 35%;
-  padding: 20px 8px 10px 8px;
+  padding: 30px 8px 20px 8px;
   background: #ededed;
 }
 
@@ -73,7 +73,7 @@
 .booking-input-field input {
   height: 100%;
   width: 100%;
-  padding-left: 60px;
+  padding-inline: 60px;
   border: none;
   outline: none;
 }

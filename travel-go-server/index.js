@@ -59,6 +59,13 @@ async function run() {
       res.send(result);
     });
 
+    // packages post method
+    app.post("/packages", async (req, res) => {
+      const newPackage = req.body;
+      const result = await packageCollection.insertOne(newPackage);
+      res.send(result);
+    });
+
     // tours get method
     app.get("/tours", async (req, res) => {
       const result = await tourCollection.find().toArray();
@@ -68,6 +75,12 @@ async function run() {
     // reviews get method
     app.get("/reviews", async (req, res) => {
       const result = await reviewCollection.find().toArray();
+      res.send(result);
+    });
+
+    // all bookings get method
+    app.get("/allBookings", async (req, res) => {
+      const result = await bookingCollection.find({}).toArray();
       res.send(result);
     });
 
