@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import Swal from "sweetalert2";
+import { json } from "react-router-dom";
 
 export const AuthContext = createContext("default-value");
 const auth = getAuth(app);
@@ -102,7 +103,23 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setIsLoading(false);
 
-      if (!currentUser) {
+      // creating jwt token when logged in
+      if (currentUser) {
+        const loggedInUser = { email: currentUser.email };
+
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedInUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("travelGo-jwt-token", data.token);
+          });
+      } else {
+        localStorage.removeItem("travelGo-jwt-token");
         localStorage.removeItem("admin");
       }
     });

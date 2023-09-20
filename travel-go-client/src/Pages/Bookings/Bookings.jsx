@@ -9,7 +9,7 @@ import { HashLink } from "react-router-hash-link";
 import Swal from "sweetalert2";
 
 const Bookings = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
 
   // flags
@@ -17,12 +17,28 @@ const Bookings = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+    fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("travelGo-jwt-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
-        setBookings(data);
+        if (!data.error) {
+          setBookings(data);
+        } else {
+          Swal.fire(
+            "Please Sign In",
+            "Your token has expired for the session",
+            "warning"
+          );
+          logOut()
+            .then(() => {})
+            .catch((err) => console.log(err));
+        }
       });
-  }, [isConfirmed, isDeleted, user]);
+  }, [isConfirmed, isDeleted, user, logOut]);
 
   console.log(bookings);
 
