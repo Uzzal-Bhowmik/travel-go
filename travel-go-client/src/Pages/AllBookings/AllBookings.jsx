@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./AllBookings.css";
 import Navigation from "../Shared/Navigation/Navigation";
 import bookingBg from "../../assets/bookingsBg.png";
 import { useLoaderData } from "react-router-dom";
 import BookingCard from "../Bookings/BookingCard/BookingCard";
 import Swal from "sweetalert2";
+import { RiAdminFill } from "react-icons/ri";
+import { AuthContext } from "../../providers/AuthProvider";
+import { HashLink } from "react-router-hash-link";
 
 const AllBookings = () => {
+  const { handleAdminLogin, handleAdminLogout, admin } =
+    useContext(AuthContext);
+
   // flags
   const [isDeleted, setIsDeleted] = useState(false);
   const [bookings, setBookings] = useState([]);
@@ -19,61 +25,42 @@ const AllBookings = () => {
   }, [isDeleted]);
 
   const handleCancelBooking = (_id) => {
-    Swal.fire({
-      title: "Admin Login",
-      html: `<input type="text" id="login" class="swal2-input" placeholder="Admin username">
-        <input type="password" id="password" class="swal2-input" placeholder="Admin password">`,
-      confirmButtonText: "Sign in",
-      focusConfirm: false,
-      preConfirm: () => {
-        const login = Swal.getPopup().querySelector("#login").value;
-        const password = Swal.getPopup().querySelector("#password").value;
-        if (!login || !password) {
-          Swal.showValidationMessage(`Please enter login and password`);
+    if (admin === "true") {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "This booking will be deleted.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/bookings/${_id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.deletedCount > 0) {
+                setIsDeleted(!isDeleted);
+                Swal.fire(
+                  "Cancelled!",
+                  "This bookings has been successfully deleted",
+                  "success"
+                );
+              }
+            });
         }
-        return { login: login, password: password };
-      },
-    }).then((result) => {
-      if (
-        result.value.login === import.meta.env.VITE_ADMIN_USERNAME &&
-        result.value.password === import.meta.env.VITE_ADMIN_PASSWORD
-      ) {
-        Swal.fire({
-          title: "Are you sure?",
-          text: "This booking will be deleted.",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            fetch(`http://localhost:5000/bookings/${_id}`, {
-              method: "DELETE",
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.deletedCount > 0) {
-                  setIsDeleted(!isDeleted);
-                  Swal.fire(
-                    "Cancelled!",
-                    "This bookings has been successfully deleted",
-                    "success"
-                  );
-                }
-              });
-          }
-        });
-      } else {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Admin Login Failed",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+      });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Admin Not Found",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
@@ -111,17 +98,50 @@ const AllBookings = () => {
         </h1>
       </div>
 
-      {/* all bookings */}
-      <div className="space-y-16">
-        {bookings?.map((booking) => (
-          <BookingCard
-            key={booking._id}
-            bookingInfo={booking}
-            admin={true}
-            handleCancelBooking={handleCancelBooking}
-          />
-        ))}
+      <div className="text-end mb-8 w-[80%] mx-auto">
+        {admin === "true" ? (
+          <button
+            className="btn btn-outline btn-error btn-wide"
+            onClick={handleAdminLogout}
+          >
+            <RiAdminFill className="text-lg" /> Admin Logout
+          </button>
+        ) : (
+          <button
+            className="btn btn-outline btn-success btn-wide"
+            onClick={handleAdminLogin}
+          >
+            <RiAdminFill className="text-lg" /> Admin Login
+          </button>
+        )}
       </div>
+
+      {/* all bookings */}
+      {bookings.length ? (
+        <div className="space-y-16">
+          {bookings?.map((booking) => (
+            <BookingCard
+              key={booking._id}
+              bookingInfo={booking}
+              admin={true}
+              handleCancelBooking={handleCancelBooking}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="text-2xl text-center">
+          <p>
+            Explore our services and bookings{" "}
+            <HashLink
+              to={"/#packages"}
+              smooth
+              className="text-[var(--primary-color)] font-bold underline"
+            >
+              here
+            </HashLink>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

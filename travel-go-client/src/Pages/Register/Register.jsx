@@ -171,19 +171,19 @@ const Register = () => {
 
             <div className="grid grid-cols-3 w-[70%] mx-auto mt-4 mb-10">
               <div
-                className="w-[80%] h-[45px] border-2 rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
+                className="w-[80%] h-[45px] border rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
                 onClick={handleGoogle}
               >
                 <FcGoogle className="text-2xl" />
               </div>
               <div
-                className="w-[80%] h-[45px] border-2 rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
+                className="w-[80%] h-[45px] border rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
                 onClick={() => alert("Feature will be coming soon...")}
               >
                 <BsFacebook className="text-2xl text-primary" />
               </div>
               <div
-                className="w-[80%] h-[45px] border-2 rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
+                className="w-[80%] h-[45px] border rounded-md flex justify-center items-center mx-auto hover:shadow-md hover:cursor-pointer transition-all duration-4000 ease-out"
                 onClick={() => alert("Feature will be coming soon...")}
               >
                 <BsGithub className="text-2xl" />

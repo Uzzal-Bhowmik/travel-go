@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddPackage.css";
 import bookingBannerBg from "../../assets/bookingBanner.png";
 import Navigation from "../Shared/Navigation/Navigation";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
+import { RiAdminFill } from "react-icons/ri";
 
 const AddPackage = () => {
+  // admin status from authProvider
+  const { handleAdminLogin, handleAdminLogout, admin } =
+    useContext(AuthContext);
+
   const handleAddPackage = (e) => {
     e.preventDefault();
 
@@ -40,56 +46,37 @@ const AddPackage = () => {
       included: ["Mountain hiking", "Wildlife safari", "Scenic drives"],
     };
 
-    Swal.fire({
-      title: "Admin Login",
-      html: `<input type="text" id="login" class="swal2-input" placeholder="Admin username">
-        <input type="password" id="password" class="swal2-input" placeholder="Admin password">`,
-      confirmButtonText: "Sign in",
-      focusConfirm: false,
-      preConfirm: () => {
-        const login = Swal.getPopup().querySelector("#login").value;
-        const password = Swal.getPopup().querySelector("#password").value;
-        if (!login || !password) {
-          Swal.showValidationMessage(`Please enter login and password`);
-        }
-        return { login: login, password: password };
-      },
-    }).then((result) => {
-      if (
-        result.value.login === import.meta.env.VITE_ADMIN_USERNAME &&
-        result.value.password === import.meta.env.VITE_ADMIN_PASSWORD
-      ) {
-        fetch("http://localhost:5000/packages", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(packageInfo),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Your package has been added successfully",
-                showConfirmButton: false,
-                timer: 2500,
-              });
+    if (admin === "true") {
+      fetch("http://localhost:5000/packages", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(packageInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your package has been added successfully",
+              showConfirmButton: false,
+              timer: 2500,
+            });
 
-              form.reset();
-            }
-          });
-      } else {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Admin Login Failed",
-          showConfirmButton: false,
-          timer: 1500,
+            form.reset();
+          }
         });
-      }
-    });
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Admin Login Failed",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
@@ -115,7 +102,7 @@ const AddPackage = () => {
       </div>
 
       {/* booking info container */}
-      <div className="spacer border" style={{ minHeight: "1800px" }}></div>
+      <div className="spacer" style={{ minHeight: "1800px" }}></div>
       <div className="container booking-info-con shadow-2xl">
         <div className="h-[100px] bg-base-200">
           <div className="h-full w-[25%] bg-white flex items-center justify-center space-x-2 ">
@@ -126,8 +113,27 @@ const AddPackage = () => {
           </div>
         </div>
 
+        {/* admin button */}
+        <div className="text-end mt-8 w-[80%] mx-auto">
+          {admin === "true" ? (
+            <button
+              className="btn btn-outline btn-error btn-wide"
+              onClick={handleAdminLogout}
+            >
+              <RiAdminFill className="text-lg" /> Admin Logout
+            </button>
+          ) : (
+            <button
+              className="btn btn-outline btn-success btn-wide"
+              onClick={handleAdminLogin}
+            >
+              <RiAdminFill className="text-lg" /> Admin Login
+            </button>
+          )}
+        </div>
+
         {/* booking inputs */}
-        <div className="mt-10 px-8 pt-6 pb-16 flex justify-center items-center">
+        <div className="mt-4 px-8 pt-6 pb-16 flex justify-center items-center">
           <div className="booking-input" style={{ width: "60%" }}>
             <div className="text-center space-y-4">
               <h1
