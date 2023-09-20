@@ -72,7 +72,7 @@ const AddPackage = () => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Admin Login Failed",
+        title: "Admin Not Logged In",
         showConfirmButton: false,
         timer: 1500,
       });
