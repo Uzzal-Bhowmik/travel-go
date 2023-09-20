@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Navigation.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import logo from "../../../assets/logo.png";
 import { AuthContext } from "../../../providers/AuthProvider";
@@ -8,11 +8,21 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const Navigation = () => {
   const { user, logOut, isLoading } = useContext(AuthContext);
   const pathName = useLocation()?.pathname;
+  const navigate = useNavigate();
+  console.log(pathName);
 
   const handleSignOut = () => {
-    logOut()
-      .then(() => {})
-      .catch((error) => console.error(error));
+    if (!pathName.includes("bookings")) {
+      logOut()
+        .then(() => {})
+        .catch((error) => console.error(error));
+    } else {
+      logOut()
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((error) => console.error(error));
+    }
   };
 
   const navLinks = (

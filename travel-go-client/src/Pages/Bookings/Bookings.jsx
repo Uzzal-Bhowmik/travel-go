@@ -7,10 +7,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import BookingCard from "./BookingCard/BookingCard";
 import { HashLink } from "react-router-hash-link";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Bookings = () => {
   const { user, logOut } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+
+  const navigate = useNavigate();
 
   // flags
   const [isDeleted, setIsDeleted] = useState(false);
@@ -33,12 +36,16 @@ const Bookings = () => {
             "Your token has expired for the session",
             "warning"
           );
+          // logout as the token expires
           logOut()
-            .then(() => {})
+            .then(() => {
+              // navigate after logout
+              navigate("/login");
+            })
             .catch((err) => console.log(err));
         }
       });
-  }, [isConfirmed, isDeleted, user, logOut]);
+  }, [isConfirmed, isDeleted, user, logOut, navigate]);
 
   console.log(bookings);
 

@@ -56,7 +56,7 @@ const AllBookings = () => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Admin Not Found",
+        title: "Admin Not Logged In",
         showConfirmButton: false,
         timer: 1500,
       });
