@@ -21,7 +21,7 @@ const PackageCard = ({ pkg }) => {
     <div className="package-card">
       {/* card img */}
       <div className="card-img-container">
-        <img src={img} alt="" className="place-img w-[95%] mx-auto md:w-full" />
+        <img src={img} alt="" className="place-img w-full" />
         <img
           src={`https://hatscripts.github.io/circle-flags/flags/${countryCode.toLowerCase()}.svg`}
           alt=""
@@ -46,12 +46,12 @@ const PackageCard = ({ pkg }) => {
         <div>
           <div className="flex justify-between items-center space-x-4 mb-3">
             <h3
-              className="text-2xl font-bold"
+              className="text-2xl font-bold w-[50%]"
               style={{ fontFamily: "var(--volkhov)" }}
             >
               {place}
             </h3>
-            <img src={ratingStars} alt="" />
+            <img src={ratingStars} alt="" className="w-[30%]" />
           </div>
 
           <div className="flex items-center space-x-2">

@@ -47,8 +47,6 @@ const Bookings = () => {
       });
   }, [isConfirmed, isDeleted, user, logOut, navigate]);
 
-  console.log(bookings);
-
   // cancel booking method
   const handleCancelBooking = (_id) => {
     Swal.fire({

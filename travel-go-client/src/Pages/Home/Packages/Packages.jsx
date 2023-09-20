@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Packages.css";
 import PackageCard from "../../../components/PackageCard/PackageCard";
+import { useMediaQuery } from "react-responsive";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
@@ -9,6 +10,11 @@ const Packages = () => {
       .then((res) => res.json())
       .then((data) => setPackages(data));
   }, []);
+
+  // show 3 packages in mobile devices
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const [showAll, setShowAll] = useState(!isMobile);
 
   return (
     <div>
@@ -25,10 +31,19 @@ const Packages = () => {
         </h1>
       </div>
 
-      <div className="container grid md:grid-cols-3 gap-7 p-5 md:p-0">
-        {packages.map((pkg) => (
+      <div className="w-[95%] mx-auto md:container grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {packages.slice(0, showAll ? packages.length : 3).map((pkg) => (
           <PackageCard key={pkg._id} pkg={pkg} />
         ))}
+
+        {isMobile && (
+          <button
+            className="btn btn-error btn-block"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        )}
       </div>
     </div>
   );

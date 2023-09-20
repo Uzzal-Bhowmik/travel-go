@@ -11,24 +11,24 @@ const Tours = () => {
   }, []);
 
   return (
-    <div className="relative container pb-10">
+    <div className="relative container pb-10 px-4 overflow-hidden">
       <img
         src={toursBg}
         alt=""
-        className="absolute right-0 -z-10 brightness-50"
+        className="absolute top-[20rem] md:top-0 -right-[12rem] md:right-0 -z-10 brightness-50"
       />
 
-      <div className="tour-text w-[50%]">
+      <div className="tour-text md:w-[50%] z-10">
         <p className="text-[var(--primary-color)] font-semibold text-lg">
           Tours
         </p>
         <h3
-          className="text-4xl font-bold mb-4 leading-relaxed text-[rgb(1, 56, 61)]"
+          className="text-3xl md:text-4xl font-bold mb-4 leading-relaxed text-[rgb(1, 56, 61)]"
           style={{ fontFamily: "var(--volkhov)" }}
         >
           We Provide You The Best Europe Sightseeing Tours
         </h3>
-        <p className="text-gray-500">
+        <p className="md:text-gray-500 text-gray-400">
           Dreaming of a European vacation? We can help you make it a reality
           with our selection of the best sightseeing tours in Europe. Whether
           you're interested in history, culture, food, or nature, we have a tour
@@ -44,11 +44,11 @@ const Tours = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-4 w-[80%] z-10 mt-10">
+      <div className="grid grid-cols-4 md:w-[80%] gap-3 z-10 mt-10">
         {tourData?.map((tour) => (
           <div key={tour._id} className="relative btn-transition">
             <span
-              className="badge rounded-full text-white w-[83px] absolute top-4 left-4"
+              className="badge rounded-full text-white md:w-[83px] absolute top-4 left-4"
               style={{
                 background:
                   "linear-gradient(100deg, #FF7255 8.93%, #BA4E38 100%)",

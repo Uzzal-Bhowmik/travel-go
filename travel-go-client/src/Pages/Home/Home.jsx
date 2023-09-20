@@ -25,9 +25,9 @@ const Home = () => {
       >
         <div>
           <Navigation />
-          <div className="home-banner p-2">
+          <div className="home-banner p-2 mt-10">
             {/* banner text */}
-            <div className="banner-text md:ml-20 w-[48%]">
+            <div className="banner-text md:ml-20 md:w-[48%]">
               <img src={bannerVector} alt="" />
 
               <h1 className="text-5xl text-white font-bold w-[80%] mt-2 mb-10 leading-[55px]">
@@ -36,10 +36,15 @@ const Home = () => {
 
               {/* banner input fields */}
               <div className="banner-input-fields flex items-center">
-                <div className="grid grid-cols-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-0">
                   <input type="text" name="" id="" placeholder="Where to?" />
 
-                  <select name="" id="" defaultValue={"Travel Type"}>
+                  <select
+                    name=""
+                    id=""
+                    defaultValue={"Travel Type"}
+                    style={{ textOverflow: "ellipsis" }}
+                  >
                     <option value="Travel Type" disabled>
                       Travel Type
                     </option>
@@ -58,7 +63,11 @@ const Home = () => {
                     <option value="">1 Month</option>
                   </select>
 
-                  <HashLink to="/#packages" smooth>
+                  <HashLink
+                    to="/#packages"
+                    smooth
+                    className="col-span-3 md:col-auto mt-3 md:mt-0"
+                  >
                     <input
                       type="submit"
                       value="Show Services"
@@ -68,8 +77,8 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="md:flex items-center text-white space-x-5 mt-5 ml-1">
-                <img src={bannerGroup} alt="" className="h-8" />
+              <div className="block md:flex items-center text-white md:space-x-5 mt-8 md:mt-5 ml-1">
+                <img src={bannerGroup} alt="" className="h-8 mb-2 md:mb-0" />
                 <span className="text-sm">
                   2,500 people booked Paris Package in last month
                 </span>
@@ -101,7 +110,7 @@ const Home = () => {
 
       {/* Separator */}
       <div
-        className="border flex items-center mb-10"
+        className="separator-section border flex items-center mb-10"
         style={{
           backgroundImage: `url(${libertyBg})`,
           backgroundRepeat: "no-repeat",
@@ -109,9 +118,9 @@ const Home = () => {
           minHeight: "399px",
         }}
       >
-        <div className="md:w-[40%] md:ml-32">
+        <div className="md:w-[40%] mx-4 md:ml-32">
           <h3
-            className="font-bold text-5xl text-white leading-snug"
+            className="font-bold text-4xl md:text-5xl text-white leading-snug"
             style={{ fontFamily: "var(--volkhov)" }}
           >
             Lets Make Your Next Holiday Amazing !
@@ -136,7 +145,7 @@ const Home = () => {
       {/* Separator End */}
 
       {/* Tours */}
-      <div className="my-40" id="tours">
+      <div className="my-20 md:my-40" id="tours">
         <Tours />
       </div>
       {/* Tours End */}

@@ -7,6 +7,8 @@
   letter-spacing: 0.611px;
 }
 
+/* slick slider styles */
+
 .slick-prev {
   left: -45px !important;
 }
@@ -19,4 +21,23 @@
 
 .slick-dots {
   margin: -14px auto !important;
+}
+
+.slick-list {
+  height: 400px !important;
+}
+
+@media screen and (max-width: 480px) {
+  .slick-prev {
+    left: -17px !important;
+    z-index: 999;
+  }
+  .slick-next {
+    right: 0 !important;
+  }
+
+  .review-img {
+    top: 10px;
+    left: 36%;
+  }
 }

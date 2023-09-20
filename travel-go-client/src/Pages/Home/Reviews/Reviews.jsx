@@ -19,10 +19,19 @@ const Reviews = () => {
     speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     cssEase: "ease-out",
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -31,8 +40,9 @@ const Reviews = () => {
         backgroundImage: `url(${reviewsBg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
-        minHeight: "768px",
+        height: "768px",
       }}
+      className="reviews-container"
     >
       <div className="text-center pt-36">
         <p className="text-[var(--primary-color)] font-semibold text-lg">

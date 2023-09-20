@@ -8,7 +8,7 @@ import { HashLink } from "react-router-hash-link";
 const Footer = () => {
   return (
     <div
-      className="pt-14 pb-10 mt-24"
+      className="pt-14 pb-10 mt-24 px-4 md:px-0"
       style={{
         backgroundColor: "#fcd9c9",
         borderTopLeftRadius: "50px",

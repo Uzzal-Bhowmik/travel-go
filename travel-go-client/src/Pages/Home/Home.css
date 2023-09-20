@@ -1,7 +1,7 @@
 /* Banner Styles */
 
 .banner-container {
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -10,7 +10,7 @@
 .home-banner {
   display: flex;
   align-items: center;
-  height: 75vh;
+  min-height: 75vh;
 }
 
 .banner-input-fields {
@@ -77,5 +77,29 @@ select {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* home banner */
+  .banner-container {
+    height: 140vh;
+  }
+  .banner-input-fields input[type="text"],
+  select {
+    border-right: 1px solid lightgray;
+  }
+  .banner-input-fields input[type="text"],
+  select {
+    padding: 0;
+  }
+  .banner-input-fields select:nth-of-type(2) {
+    border-right: none;
+  }
+
+  /* separator section */
+  .separator-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      url("../../assets/libertyBgSmall.png") !important;
   }
 }

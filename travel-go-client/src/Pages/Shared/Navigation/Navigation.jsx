@@ -9,7 +9,6 @@ const Navigation = () => {
   const { user, logOut, isLoading } = useContext(AuthContext);
   const pathName = useLocation()?.pathname;
   const navigate = useNavigate();
-  console.log(pathName);
 
   const handleSignOut = () => {
     if (!pathName.includes("bookings")) {
@@ -74,16 +73,16 @@ const Navigation = () => {
   );
 
   return (
-    <div className="navbar container">
+    <div className="navbar md:container">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#fff"
             >
               <path
                 strokeLinecap="round"
@@ -100,7 +99,7 @@ const Navigation = () => {
             {navLinks}
           </ul>
         </div>
-        <Link className="btn btn-ghost border-0" to="/">
+        <Link className="btn btn-ghost p-0 md:px-4" to="/">
           <img src={logo} alt="travel go logo" className="h-full" />
         </Link>
       </div>
