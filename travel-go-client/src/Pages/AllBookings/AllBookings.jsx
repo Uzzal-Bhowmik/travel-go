@@ -124,6 +124,7 @@ const AllBookings = () => {
               key={booking._id}
               bookingInfo={booking}
               admin={true}
+              email={booking.email}
               handleCancelBooking={handleCancelBooking}
             />
           ))}

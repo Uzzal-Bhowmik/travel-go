@@ -1,0 +1,11 @@
+@media screen and (max-width: 480px) {
+  .booking-banner-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      url("/bookingsBgSmall.png") !important;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+}

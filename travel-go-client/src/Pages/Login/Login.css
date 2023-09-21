@@ -7,3 +7,15 @@
   transform: translateY(-1.5rem) scale(0.75);
   background-color: white;
 }
+
+/* login page media queries */
+@media screen and (max-width: 480px) {
+  .login-reg-container {
+    flex-direction: column-reverse;
+  }
+
+  /* .login-reg-container .right-side img {
+    height: 300px;
+    display: none;
+  } */
+}

@@ -100,10 +100,11 @@ const DynamicBooking = () => {
       </div>
 
       {/* booking info container */}
-      <div className="spacer h-[900px]"></div>
+      <div className="spacer h-[2000px] md:h-[900px]"></div>
       <div className="container booking-info-con shadow-2xl">
+        {/* header */}
         <div className="h-[100px] bg-base-200">
-          <div className="h-full w-[25%] bg-white flex items-center justify-center space-x-2 ">
+          <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2 ">
             <AiOutlineInfoCircle className="text-lg" />
             <span className="text-lg text-[#343434] font-bold">
               Information
@@ -112,17 +113,17 @@ const DynamicBooking = () => {
         </div>
 
         {/* booking text and inputs */}
-        <div className="mt-10 px-8 pt-6 pb-10 flex">
+        <div className="booking-container mt-10 px-2 md:px-8 pt-6 pb-10 flex">
           {/* booking text */}
           <div className="booking-text">
-            <div className="flex items-center">
+            <div className="flex flex-col md:flex-row items-start md:items-center">
               <h3
                 className="text-4xl text-[#181E4B] font-bold"
                 style={{ fontFamily: "var(--volkhov)" }}
               >
                 {country}
               </h3>
-              <p className="text-[var(--primary-color)] ml-[75px] font-bold text-xl">
+              <p className="text-[var(--primary-color)] md:ml-[75px] mt-2 md:mt-0 font-bold text-xl">
                 {price} ${" "}
                 <span className="text-base text-gray-300">/ Per Couple</span>
               </p>
@@ -143,37 +144,39 @@ const DynamicBooking = () => {
                   <tr>
                     <td>Destination</td>
                     <td>
-                      <span className="pr-3">:</span> {place}, {country}
+                      <span className="pr-3 hidden md:inline">:</span> {place},{" "}
+                      {country}
                     </td>
                   </tr>
 
                   <tr>
                     <td>Departure</td>
                     <td>
-                      <span className="pr-3">:</span> {departure}
+                      <span className="pr-3 hidden md:inline">:</span>{" "}
+                      {departure}
                     </td>
                   </tr>
 
                   <tr>
                     <td>Departure Time</td>
                     <td>
-                      <span className="pr-3">:</span> Approximately{" "}
-                      {departureTime}
+                      <span className="pr-3 hidden md:inline">:</span>{" "}
+                      Approximately {departureTime}
                     </td>
                   </tr>
 
                   <tr>
                     <td>Return Time</td>
                     <td>
-                      <span className="pr-3">:</span> Approximately{" "}
-                      {arrivalTime}
+                      <span className="pr-3 hidden md:inline">:</span>{" "}
+                      Approximately {arrivalTime}
                     </td>
                   </tr>
                   <tr>
                     <td>Included</td>
                     <td className="include-items">
-                      <span>:</span>
-                      <div className="pl-3 grid grid-cols-2 gap-4">
+                      <span className="hidden md:inline">:</span>
+                      <div className="pl-3 grid grid-cols-1 md:grid-cols-2 gap-4">
                         {included.map((item) => (
                           <p key={item} className="flex items-center space-x-1">
                             <AiOutlineCheckCircle className="text-xl font-bold" />

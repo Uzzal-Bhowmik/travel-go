@@ -55,7 +55,7 @@ const Navigation = () => {
             <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
               Bookings
             </summary>
-            <ul className="md:p-2 md:w-[250px] md:bg-black border-2">
+            <ul className="p-0 md:p-2 md:w-[250px] md:bg-black md:border-2">
               <li className="md:text-white">
                 <Link to="/bookings">My Bookings</Link>
               </li>
@@ -97,6 +97,54 @@ const Navigation = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
+
+            {/* user icon */}
+            {isLoading ? (
+              <span className="loading loading-ring loading-lg text-warning mr-4"></span>
+            ) : (
+              <>
+                {user?.uid && (
+                  <div
+                    className="mr-4"
+                    style={{ cursor: "pointer", width: "50px" }}
+                  >
+                    <>
+                      {user?.photoURL ? (
+                        <img
+                          src={`${user.photoURL}`}
+                          style={{
+                            width: "100%",
+                            borderRadius: "50%",
+                          }}
+                          title={`${user.email}`}
+                        />
+                      ) : (
+                        <span
+                          className="text-3xl font-bold text-white rounded-full bg-green-600 block text-center h-[50px] border-4 border-gray-300 py-1"
+                          title={`${user?.email}`}
+                        >
+                          {(user?.displayName !== null &&
+                            user?.displayName[0].toUpperCase()) ||
+                            user?.email[0].toUpperCase()}
+                        </span>
+                      )}
+                    </>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* sign out buttons */}
+            {user?.uid && (
+              <>
+                <button
+                  className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition mt-2"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </button>
+              </>
+            )}
           </ul>
         </div>
         <Link className="btn btn-ghost p-0 md:px-4" to="/">
@@ -115,7 +163,7 @@ const Navigation = () => {
           <>
             {user?.uid && (
               <div
-                className="mr-4"
+                className="mr-4 hidden md:block"
                 style={{ cursor: "pointer", width: "50px" }}
               >
                 <>
@@ -147,7 +195,7 @@ const Navigation = () => {
         {user?.uid ? (
           <>
             <button
-              className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+              className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition hidden md:inline"
               onClick={handleSignOut}
             >
               Sign Out
@@ -165,7 +213,7 @@ const Navigation = () => {
             ) : (
               <Link
                 to="/login"
-                className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition"
+                className="bg-[#DF6951] text-white md:px-4 py-3 rounded-xl font-medium btn-transition navbar-end-btn"
               >
                 Get In Touch
               </Link>

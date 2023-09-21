@@ -68,7 +68,7 @@ const Footer = () => {
 
         <div>
           <h4 className="text-lg font-semibold">Join Our Newsletter</h4>
-          <div className="join mt-5 mb-4">
+          <div className="join mt-5 mb-4 footer-input">
             <input
               className="input input-bordered join-item bg-[#eef]"
               placeholder="Your Email Address"

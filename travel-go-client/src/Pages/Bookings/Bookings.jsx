@@ -123,10 +123,10 @@ const Bookings = () => {
       </div>
 
       {/* user profile */}
-      <div className="relative min-h-[580px]">
+      <div className="relative h-[310px] md:h-[580px]">
         <img src={profileBg} alt="" className="mt-16 mx-auto block" />
 
-        <div className="absolute bottom-40 left-[46%] w-[120px] h-[120px] border-4 border-[#ff6e30] rounded-full">
+        <div className="absolute bottom-36 md:bottom-40 left-[34%] md:left-[46%] w-[120px] h-[120px] border-4 border-[#ff6e30] rounded-full">
           {user?.photoURL ? (
             <>
               <img

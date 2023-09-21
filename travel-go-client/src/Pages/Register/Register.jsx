@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Navigation from "../Shared/Navigation/Navigation";
 import loginBg from "../../assets/loginBg.png";
 import registerPic from "../../assets/signUp.png";
+import registerSmall from "/signUpSmall.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsGithub } from "react-icons/bs";
@@ -70,9 +71,9 @@ const Register = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center container mt-20">
+      <div className="flex justify-between items-center container mt-20 login-reg-container">
         {/* left side: login form */}
-        <div className="w-[50%]">
+        <div className="md:w-[50%]">
           <form
             action=""
             className="md:w-[90%] md:ml-auto p-4"
@@ -193,8 +194,18 @@ const Register = () => {
         </div>
 
         {/* right side */}
-        <div className="w-[40%]">
-          <img src={registerPic} alt="" className="w-full h-[600px]" />
+        <div className="md:w-[40%]">
+          <img
+            src={registerPic}
+            alt=""
+            className="hidden md:inline w-full h-[600px]"
+          />
+
+          <img
+            src={registerSmall}
+            alt=""
+            className="block md:hidden w-[95%] mx-auto mb-4 rounded-xl"
+          />
         </div>
       </div>
     </div>

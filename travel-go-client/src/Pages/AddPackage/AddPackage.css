@@ -2,3 +2,18 @@
 textarea {
   width: 90% !important;
 }
+
+.booking-input {
+  width: 60%;
+}
+
+@media screen and (max-width: 480px) {
+  .booking-input {
+    width: 100%;
+  }
+
+  .add-package-input input,
+  .add-package-input textarea {
+    padding-inline: 16px !important;
+  }
+}

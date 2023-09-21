@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import Navigation from "../Shared/Navigation/Navigation";
 import loginBg from "../../assets/loginBg.png";
+import loginSmall from "/loginSmall.png";
 import loginSidePic from "../../assets/login.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
@@ -74,9 +75,9 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center container mt-20">
+      <div className="flex justify-between items-center container mt-20 login-reg-container">
         {/* left side: login form */}
-        <div className="w-[50%]">
+        <div className="md:w-[50%] left-side">
           <form
             action=""
             className="md:w-[90%] md:ml-auto p-4"
@@ -197,8 +198,17 @@ const Login = () => {
         </div>
 
         {/* right side */}
-        <div className="w-[40%]">
-          <img src={loginSidePic} alt="" className="w-full h-[600px]" />
+        <div className="md:w-[40%] right-side">
+          <img
+            src={loginSidePic}
+            alt=""
+            className="hidden md:inline w-full h-[600px]"
+          />
+          <img
+            src={loginSmall}
+            alt=""
+            className="block md:hidden rounded-xl w-[96%] mx-auto mb-4"
+          />
         </div>
       </div>
     </div>

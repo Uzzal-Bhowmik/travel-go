@@ -33,3 +33,20 @@
 .btn-transition:hover {
   transform: translateY(-3px);
 }
+
+@media screen and (max-width: 480px) {
+  .menu li a:hover {
+    color: black;
+  }
+
+  .navbar-end-btn {
+    font-size: small;
+    width: 100px;
+    text-align: center;
+    padding-inline: 8px;
+  }
+
+  .dropdown label {
+    padding-left: 0 !important;
+  }
+}

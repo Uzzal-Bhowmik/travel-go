@@ -102,10 +102,10 @@ const AddPackage = () => {
       </div>
 
       {/* booking info container */}
-      <div className="spacer" style={{ minHeight: "1800px" }}></div>
+      <div className="spacer h-[1800px]"></div>
       <div className="container booking-info-con shadow-2xl">
         <div className="h-[100px] bg-base-200">
-          <div className="h-full w-[25%] bg-white flex items-center justify-center space-x-2 ">
+          <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2 ">
             <AiOutlinePlusCircle className="text-lg" />
             <span className="text-lg text-[#343434] font-bold">
               New Package
@@ -133,8 +133,8 @@ const AddPackage = () => {
         </div>
 
         {/* booking inputs */}
-        <div className="mt-4 px-8 pt-6 pb-16 flex justify-center items-center">
-          <div className="booking-input" style={{ width: "60%" }}>
+        <div className="mt-4 px-4 md:px-8 pt-6 pb-16 flex justify-center items-center">
+          <div className="booking-input">
             <div className="text-center space-y-4">
               <h1
                 className="text-4xl text-[#181E4B] font-bold"
@@ -156,15 +156,15 @@ const AddPackage = () => {
               className="mt-10 new-package-input"
               onSubmit={handleAddPackage}
             >
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input type="text" name="country" placeholder="Country Name" />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input type="text" name="place" placeholder="Place Name" />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="text"
                   name="countryCode"
@@ -172,15 +172,15 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input type="text" name="img" placeholder="Image Link" />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input type="number" name="price" placeholder="Price" />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="number"
                   name="duration"
@@ -188,7 +188,7 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="number"
                   name="people"
@@ -196,7 +196,7 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="text"
                   name="departure"
@@ -204,7 +204,7 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="text"
                   name="departureTime"
@@ -212,7 +212,7 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="text"
                   name="arrivalTime"
@@ -220,7 +220,7 @@ const AddPackage = () => {
                 />
               </div>
               {/* -------- */}
-              <div className="booking-input-field">
+              <div className="booking-input-field add-package-input">
                 <input
                   type="text"
                   name="review"
@@ -229,12 +229,14 @@ const AddPackage = () => {
               </div>
               {/* -------- */}
 
-              <textarea
-                name="desc"
-                rows="6"
-                placeholder="Description"
-                className="mx-auto block px-14 py-7 outline-none"
-              ></textarea>
+              <div className="add-package-input">
+                <textarea
+                  name="desc"
+                  rows="6"
+                  placeholder="Description"
+                  className="mx-auto block px-14 py-7 outline-none"
+                ></textarea>
+              </div>
 
               <button
                 className="btn btn-transition w-[225px] h-[25px] bg-[#DF6951] text-white rounded-lg font-medium hover:bg-[#DF6951] mx-auto block mt-10"

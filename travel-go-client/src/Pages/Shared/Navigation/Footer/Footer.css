@@ -1,0 +1,15 @@
+@media screen and (max-width: 480px) {
+  .footer-input {
+    width: 90%;
+    flex-direction: column;
+  }
+  .footer-input input,
+  .footer-input button {
+    font-size: small;
+    border-radius: 10px !important;
+  }
+
+  .footer-input input {
+    margin-bottom: 10px;
+  }
+}

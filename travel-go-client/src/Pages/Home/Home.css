@@ -100,6 +100,10 @@ select {
   /* separator section */
   .separator-section {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      url("../../assets/libertyBgSmall.png") !important;
+      url("/libertyBgSmall.png") !important;
+  }
+
+  .scroll-down-icon {
+    left: 45%;
   }
 }
