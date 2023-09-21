@@ -50,12 +50,12 @@ const Navigation = () => {
         </HashLink>
       </li>
       {user?.uid && (
-        <li tabIndex={0}>
+        <li tabIndex={0} className="pb-2">
           <details>
             <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
               Bookings
             </summary>
-            <ul className="p-0 md:p-2 md:w-[250px] md:bg-black md:border-2">
+            <ul className="p-0 md:p-2 w-[90%] md:w-[250px] md:bg-black md:border-2">
               <li className="md:text-white">
                 <Link to="/bookings">My Bookings</Link>
               </li>
