@@ -101,7 +101,7 @@ const DynamicBooking = () => {
 
       {/* booking info container */}
       <div className="spacer h-[2000px] md:h-[900px]"></div>
-      <div className="container booking-info-con shadow-2xl">
+      <div className="container booking-info-con shadow-2xl bg-white">
         {/* header */}
         <div className="h-[100px] bg-base-200">
           <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2 ">

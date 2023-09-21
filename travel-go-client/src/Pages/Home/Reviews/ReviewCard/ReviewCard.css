@@ -19,10 +19,6 @@
   color: var(--primary-color) !important;
 }
 
-.slick-dots {
-  margin: -14px auto !important;
-}
-
 .slick-list {
   height: 400px !important;
 }
