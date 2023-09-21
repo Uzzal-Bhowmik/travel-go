@@ -50,7 +50,7 @@ const Navigation = () => {
         </HashLink>
       </li>
       {user?.uid && (
-        <li tabIndex={0} className="pb-2">
+        <li tabIndex={0} className="pb-2 w-full md:w-[250px]">
           <details>
             <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
               Bookings
@@ -94,7 +94,7 @@ const Navigation = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60"
           >
             {navLinks}
 
