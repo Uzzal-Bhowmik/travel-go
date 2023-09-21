@@ -57,7 +57,7 @@ const DynamicBooking = () => {
       img,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://travelgo-server.onrender.com/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

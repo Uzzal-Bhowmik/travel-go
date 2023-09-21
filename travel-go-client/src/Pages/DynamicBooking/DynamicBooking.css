@@ -126,7 +126,7 @@ input::-webkit-inner-spin-button {
   .booking-details tr {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 
   .booking-details td {

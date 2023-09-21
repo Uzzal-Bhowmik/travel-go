@@ -47,7 +47,7 @@ const AddPackage = () => {
     };
 
     if (admin === "true") {
-      fetch("http://localhost:5000/packages", {
+      fetch("https://travelgo-server.onrender.com/packages", {
         method: "POST",
         headers: {
           "content-type": "application/json",

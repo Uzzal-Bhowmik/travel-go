@@ -5,7 +5,7 @@ import toursBg from "../../../assets/toursImg.png";
 const Tours = () => {
   const [tourData, setTourData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/tours")
+    fetch("https://travelgo-server.onrender.com/tours")
       .then((res) => res.json())
       .then((data) => setTourData(data));
   }, []);

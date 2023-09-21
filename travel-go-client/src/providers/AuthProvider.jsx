@@ -107,7 +107,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         const loggedInUser = { email: currentUser.email };
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://travelgo-server.onrender.com/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

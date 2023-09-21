@@ -30,7 +30,9 @@ const router = createBrowserRouter([
       {
         path: "packages/:id",
         loader: async ({ params }) =>
-          await fetch(`http://localhost:5000/packages/${params.id}`),
+          await fetch(
+            `https://travelgo-server.onrender.com/packages/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <DynamicBooking />
