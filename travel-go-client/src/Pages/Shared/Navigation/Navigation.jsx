@@ -138,7 +138,7 @@ const Navigation = () => {
             {user?.uid && (
               <>
                 <button
-                  className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition mt-2"
+                  className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition mt-2 btn-block"
                   onClick={handleSignOut}
                 >
                   Sign Out
