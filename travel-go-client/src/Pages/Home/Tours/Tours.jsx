@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Tours.css";
 import toursBg from "../../../assets/toursImg.png";
+import CenteredSpinner from "../../../components/CenteredSpinner/CenteredSpinner";
 
 const Tours = () => {
   const [tourData, setTourData] = useState([]);
@@ -11,7 +12,7 @@ const Tours = () => {
   }, []);
 
   return (
-    <div className="relative container pb-10 px-4 overflow-hidden">
+    <div className="relative container pb-10 px-4 overflow-hidden min-h-fit">
       <img
         src={toursBg}
         alt=""
@@ -44,26 +45,34 @@ const Tours = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-4 md:w-[80%] gap-3 z-10 mt-10">
-        {tourData?.map((tour) => (
-          <div key={tour._id} className="relative btn-transition">
-            <span
-              className="badge rounded-full text-white md:w-[83px] absolute top-4 left-4"
-              style={{
-                background:
-                  "linear-gradient(100deg, #FF7255 8.93%, #BA4E38 100%)",
-              }}
-            >
-              ${tour.price}
-            </span>
-            <img
-              src={tour.img}
-              alt=""
-              className="shadow-lg border-2 border-gray-300 rounded-xl"
-            />
+      {!tourData.length ? (
+        <div className="h-[300px] w-[30%] py-20">
+          <span className="loading loading-spinner text-warning loading-lg"></span>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-4 md:w-[80%] gap-3 z-10 mt-10">
+            {tourData?.map((tour) => (
+              <div key={tour._id} className="relative btn-transition">
+                <span
+                  className="badge rounded-full text-white md:w-[83px] absolute top-4 left-4"
+                  style={{
+                    background:
+                      "linear-gradient(100deg, #FF7255 8.93%, #BA4E38 100%)",
+                  }}
+                >
+                  ${tour.price}
+                </span>
+                <img
+                  src={tour.img}
+                  alt=""
+                  className="shadow-lg border-2 border-error rounded-xl"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </div>
   );
 };

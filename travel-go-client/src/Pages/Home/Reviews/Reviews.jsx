@@ -3,6 +3,7 @@ import "./Reviews.css";
 import reviewsBg from "../../../assets/reviewsBg.png";
 import ReviewCard from "./ReviewCard/ReviewCard";
 import Slider from "react-slick";
+import CenteredSpinner from "../../../components/CenteredSpinner/CenteredSpinner";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -57,13 +58,17 @@ const Reviews = () => {
       </div>
 
       {/* reviews slider */}
-      <div className="w-[90%] md:w-[50%] mx-auto mt-10">
-        <Slider {...settings}>
-          {reviews.map((review) => (
-            <ReviewCard key={review._id} userReview={review} />
-          ))}
-        </Slider>
-      </div>
+      {!reviews.length ? (
+        <CenteredSpinner height={true} />
+      ) : (
+        <div className="w-[90%] md:w-[50%] mx-auto mt-10">
+          <Slider {...settings}>
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} userReview={review} />
+            ))}
+          </Slider>
+        </div>
+      )}
     </div>
   );
 };
