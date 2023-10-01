@@ -130,18 +130,7 @@ const AllBookings = () => {
           ))}
         </div>
       ) : (
-        <div className="text-2xl text-center">
-          <p>
-            Explore our services and bookings{" "}
-            <HashLink
-              to={"/#packages"}
-              smooth
-              className="text-[var(--primary-color)] font-bold underline"
-            >
-              here
-            </HashLink>
-          </p>
-        </div>
+        <progress className="progress progress-error w-1/2 mx-auto block"></progress>
       )}
     </div>
   );
