@@ -9,7 +9,7 @@ textarea {
 }
 
 @media screen and (max-width: 480px) {
-  .booking-input {
+  .add-package .booking-input {
     width: 100%;
     padding-inline: 8px;
   }

@@ -102,7 +102,7 @@ const AddPackage = () => {
       </div>
 
       {/* booking info container */}
-      <div className="spacer h-[1800px]"></div>
+      <div className="spacer h-[1800px] bg-white border-4"></div>
       <div className="container booking-info-con shadow-2xl">
         <div className="h-[100px] bg-base-200">
           <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2">
