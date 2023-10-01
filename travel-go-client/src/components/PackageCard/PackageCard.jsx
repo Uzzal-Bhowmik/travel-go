@@ -18,7 +18,7 @@ const PackageCard = ({ pkg }) => {
     price,
   } = pkg;
   return (
-    <div className="package-card">
+    <div className="package-card border-2 border-red-300 hover:border-red-500">
       {/* card img */}
       <div className="card-img-container">
         <img src={img} alt="" className="place-img w-full" />
