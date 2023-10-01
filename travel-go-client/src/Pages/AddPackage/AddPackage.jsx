@@ -133,7 +133,7 @@ const AddPackage = () => {
         </div>
 
         {/* booking inputs */}
-        <div className="px-4 md:px-6 pt-6 pb-16 flex justify-center items-center">
+        <div className="add-package px-4 md:px-6 pt-6 pb-16 flex justify-center items-center">
           <div className="booking-input">
             <div className="text-center space-y-4">
               <h1

@@ -3,7 +3,7 @@ textarea {
   width: 90% !important;
 }
 
-.booking-input {
+.add-package .booking-input {
   width: 70%;
   padding: 3rem 1rem;
 }
