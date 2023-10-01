@@ -105,7 +105,7 @@ const AddPackage = () => {
       <div className="spacer h-[1800px]"></div>
       <div className="container booking-info-con shadow-2xl">
         <div className="h-[100px] bg-base-200">
-          <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2 ">
+          <div className="h-full w-[50%] md:w-[25%] bg-white flex items-center justify-center space-x-2">
             <AiOutlinePlusCircle className="text-lg" />
             <span className="text-lg text-[#343434] font-bold">
               New Package
@@ -114,7 +114,7 @@ const AddPackage = () => {
         </div>
 
         {/* admin button */}
-        <div className="text-end mt-8 w-[80%] mx-auto">
+        <div className="text-end pt-8 w-[80%] mx-auto">
           {admin === "true" ? (
             <button
               className="btn btn-outline btn-error btn-wide"
@@ -133,17 +133,17 @@ const AddPackage = () => {
         </div>
 
         {/* booking inputs */}
-        <div className="mt-4 px-4 md:px-8 pt-6 pb-16 flex justify-center items-center">
+        <div className="px-4 md:px-6 pt-6 pb-16 flex justify-center items-center">
           <div className="booking-input">
             <div className="text-center space-y-4">
               <h1
                 className="text-4xl text-[#181E4B] font-bold"
                 style={{ fontFamily: "var(--volkhov)" }}
               >
-                Build The Package
+                Build A New Package
               </h1>
 
-              <p>
+              <p className="md:px-8">
                 Don't forget to fill all the fields with relevant and necessary
                 information because this package will be exhibited on the home
                 page.
@@ -242,7 +242,7 @@ const AddPackage = () => {
                 className="btn btn-transition w-[225px] h-[25px] bg-[#DF6951] text-white rounded-lg font-medium hover:bg-[#DF6951] mx-auto block mt-10"
                 type="submit"
               >
-                Book Now
+                ADD PACKAGE
               </button>
             </form>
           </div>
