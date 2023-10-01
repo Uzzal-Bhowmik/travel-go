@@ -18,7 +18,9 @@ const Bookings = () => {
   // flags
   const [isDeleted, setIsDeleted] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // jwt token and bookings data fetch
   useEffect(() => {
     fetch(
       `https://travelgo-server.onrender.com/bookings?email=${user?.email}`,
@@ -33,6 +35,7 @@ const Bookings = () => {
       .then((data) => {
         if (!data.error) {
           setBookings(data);
+          setIsLoading(false);
         } else {
           Swal.fire(
             "Please Sign In",
@@ -80,6 +83,7 @@ const Bookings = () => {
     });
   };
 
+  // confirm booking method
   const handleConfirmBooking = (_id) => {
     fetch(`https://travelgo-server.onrender.com/bookings/${_id}`, {
       method: "PATCH",
@@ -118,7 +122,7 @@ const Bookings = () => {
             {/* banner text */}
             <div className="banner-text mx-auto md:w-[50%] text-white text-center space-y-3">
               <h1 className="text-6xl" style={{ fontFamily: "var(--curly)" }}>
-                Bookings
+                Your Bookings
               </h1>
             </div>
           </div>
@@ -163,30 +167,36 @@ const Bookings = () => {
 
       {/* user booking information */}
       <div className="container">
-        {bookings.length ? (
-          <div className="container space-y-16">
-            {bookings.map((booking) => (
-              <BookingCard
-                key={booking._id}
-                bookingInfo={booking}
-                handleCancelBooking={handleCancelBooking}
-                handleConfirmBooking={handleConfirmBooking}
-              />
-            ))}
-          </div>
+        {isLoading ? (
+          <progress className="progress progress-error w-1/2 mx-auto block"></progress>
         ) : (
-          <div className="text-2xl text-center">
-            <p>
-              Explore our services and bookings{" "}
-              <HashLink
-                to={"/#packages"}
-                smooth
-                className="text-[var(--primary-color)] font-bold underline"
-              >
-                here
-              </HashLink>
-            </p>
-          </div>
+          <>
+            {bookings.length ? (
+              <div className="container space-y-16">
+                {bookings.map((booking) => (
+                  <BookingCard
+                    key={booking._id}
+                    bookingInfo={booking}
+                    handleCancelBooking={handleCancelBooking}
+                    handleConfirmBooking={handleConfirmBooking}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-2xl text-center">
+                <p>
+                  Explore our services and bookings{" "}
+                  <HashLink
+                    to={"/#packages"}
+                    smooth
+                    className="text-[var(--primary-color)] font-bold underline"
+                  >
+                    here
+                  </HashLink>
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

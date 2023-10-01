@@ -50,9 +50,9 @@ const Navigation = () => {
         </HashLink>
       </li>
       {user?.uid && (
-        <li tabIndex={0} className="pb-2 w-full md:w-[250px]">
+        <li tabIndex={0} className="pb-2 w-full md:w-fit">
           <details>
-            <summary className="md:text-white md:hover:text-white text-base pt-[6px]">
+            <summary className="navbar-toggle md:text-white md:hover:text-white text-base pt-[6px]">
               Bookings
             </summary>
             <ul className="p-0 md:p-2 w-[90%] md:w-[250px] md:bg-black md:border-2">
@@ -138,7 +138,7 @@ const Navigation = () => {
             {user?.uid && (
               <>
                 <button
-                  className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition mt-2 btn-block"
+                  className="bg-[#DF6951] text-white py-3 rounded-xl font-medium btn-transition mt-2 btn-block"
                   onClick={handleSignOut}
                 >
                   Sign Out
@@ -195,7 +195,7 @@ const Navigation = () => {
         {user?.uid ? (
           <>
             <button
-              className="bg-[#DF6951] text-white px-4 py-3 rounded-xl font-medium btn-transition hidden md:inline"
+              className="bg-[#DF6951] text-white md:min-w-[120px] py-3 rounded-xl font-medium btn-transition hidden md:inline"
               onClick={handleSignOut}
             >
               Sign Out

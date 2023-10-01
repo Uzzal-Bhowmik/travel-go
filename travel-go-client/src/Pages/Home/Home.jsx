@@ -11,7 +11,6 @@ import Packages from "./Packages/Packages";
 import libertyBg from "../../assets/libertyBg.png";
 import Tours from "./Tours/Tours";
 import Reviews from "./Reviews/Reviews";
-import Footer from "../Shared/Navigation/Footer/Footer";
 
 const Home = () => {
   return (
@@ -71,7 +70,7 @@ const Home = () => {
                     <input
                       type="submit"
                       value="Show Services"
-                      className="bg-[#DF6951] px-3 py-2 text-white text-center w-[90%] mx-auto block rounded-lg ml-4"
+                      className="bg-[#DF6951] py-2 text-white text-center min-w-[90%] mx-auto block rounded-lg"
                     />
                   </HashLink>
                 </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Packages.css";
 import PackageCard from "../../../components/PackageCard/PackageCard";
 import { useMediaQuery } from "react-responsive";
+import CenteredSpinner from "../../../components/CenteredSpinner/CenteredSpinner";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
@@ -31,20 +32,24 @@ const Packages = () => {
         </h1>
       </div>
 
-      <div className="w-[95%] mx-auto md:container grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {packages.slice(0, showAll ? packages.length : 3).map((pkg) => (
-          <PackageCard key={pkg._id} pkg={pkg} />
-        ))}
+      {!packages.length ? (
+        <CenteredSpinner />
+      ) : (
+        <div className="w-[95%] mx-auto md:container grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {packages.slice(0, showAll ? packages.length : 3).map((pkg) => (
+            <PackageCard key={pkg._id} pkg={pkg} />
+          ))}
 
-        {isMobile && (
-          <button
-            className="btn btn-error btn-block"
-            onClick={() => setShowAll(!showAll)}
-          >
-            {showAll ? "Show Less" : "Show More"}
-          </button>
-        )}
-      </div>
+          {isMobile && (
+            <button
+              className="btn btn-error btn-block"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? "Show Less" : "Show More"}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
