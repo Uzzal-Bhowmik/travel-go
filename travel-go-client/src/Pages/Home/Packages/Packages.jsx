@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Packages.css";
 import PackageCard from "../../../components/PackageCard/PackageCard";
 import { useMediaQuery } from "react-responsive";
 import CenteredSpinner from "../../../components/CenteredSpinner/CenteredSpinner";
+import usePackages from "../../../hooks/usePackages";
 
 const Packages = () => {
-  const [packages, setPackages] = useState([]);
-  useEffect(() => {
-    fetch("https://travelgo-server.onrender.com/packages")
-      .then((res) => res.json())
-      .then((data) => setPackages(data));
-  }, []);
+  // travel packages data
+  const { packages } = usePackages();
 
   // show 3 packages in mobile devices
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -32,7 +29,7 @@ const Packages = () => {
         </h1>
       </div>
 
-      {!packages.length ? (
+      {!packages?.length ? (
         <CenteredSpinner />
       ) : (
         <div className="w-[95%] mx-auto md:container grid md:grid-cols-2 lg:grid-cols-3 gap-7">

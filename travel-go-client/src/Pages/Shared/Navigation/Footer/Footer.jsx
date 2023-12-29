@@ -8,7 +8,7 @@ import { HashLink } from "react-router-hash-link";
 const Footer = () => {
   return (
     <div
-      className="pt-14 pb-10 mt-24 px-4 md:px-0"
+      className="pt-14 pb-3 mt-24 px-4 md:px-0"
       style={{
         backgroundColor: "#fcd9c9",
         borderTopLeftRadius: "50px",
@@ -81,7 +81,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="text-center text-sm text-gray-500 mt-8">
+      <p className="text-center text-sm text-gray-500">
         Copyright &copy;Uzzal Bhowmik 2023. All Rights Reserved.
       </p>
     </div>

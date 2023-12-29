@@ -4,6 +4,8 @@ import { BsCalendarEvent, BsPeople } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 import ratingStars from "../../assets/ratingStars.png";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const PackageCard = ({ pkg }) => {
   const {
@@ -21,7 +23,12 @@ const PackageCard = ({ pkg }) => {
     <div className="package-card border-2 border-red-300 hover:border-red-500">
       {/* card img */}
       <div className="card-img-container">
-        <img src={img} alt="" className="place-img w-full" />
+        <LazyLoadImage
+          effect="blur"
+          src={img}
+          className="place-img w-full"
+        ></LazyLoadImage>
+        {/* <img src={img} alt="" /> */}
         <img
           src={`https://hatscripts.github.io/circle-flags/flags/${countryCode.toLowerCase()}.svg`}
           alt=""
